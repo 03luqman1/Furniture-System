@@ -39,8 +39,8 @@ namespace Testing1
         {
             clsCustomer Customer = new clsCustomer();
             Int32 TestData = 232456;
-            Customer.ID = TestData;
-            Assert.AreEqual(Customer.ID, TestData);
+            Customer.CustomerID = TestData;
+            Assert.AreEqual(Customer.CustomerID, TestData);
         }
 
         [TestMethod]
@@ -70,7 +70,32 @@ namespace Testing1
             Assert.AreEqual(Customer.PhoneNumber, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Int32 CustomerID = 2;
+            Found = Customer.Find(CustomerID);
+            Assert.IsTrue(Found);
+        }
 
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 2;
+            Found = Customer.Find(CustomerID);
+            if (Customer.CustomerID != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+    
 
     }
 }

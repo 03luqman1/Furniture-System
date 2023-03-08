@@ -8,10 +8,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="lblCustomerNo" runat="server" Text="Customer Number "></asp:Label>
-            <asp:TextBox ID="txtCustomerNo" runat="server"></asp:TextBox>
-        </div>
+        <p>
+            <asp:Label ID="Label1" runat="server" Text="Customer Number "></asp:Label>
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        </p>
         <asp:Label ID="lblName" runat="server" Text="Full Name " width="117px"></asp:Label>
         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         <p>
