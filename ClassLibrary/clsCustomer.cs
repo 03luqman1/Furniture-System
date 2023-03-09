@@ -5,9 +5,20 @@ namespace ClassLibrary
     public class clsCustomer
     {
         private Int32 mCustomerID;
+        private string mCustomerName;
         public DateTime DateOfBirth { get; set; }
         public bool Verified { get; set; }
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return mCustomerName;
+            }
+            set
+            {
+                mCustomerName = value;
+            }
+        }
         public Int32 CustomerID
         {
             get
