@@ -86,8 +86,8 @@ namespace Testing1
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 2;
-            Found = Customer.Find(CustomerID);
+            Int32 CustomerNo = 2;
+            Found = Customer.Find(CustomerNo);
             if (Customer.CustomerID != 2)
             {
                 OK = false;
@@ -95,7 +95,21 @@ namespace Testing1
             Assert.IsTrue(OK);
 
         }
-    
 
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            clsCustomer Customer = new clsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerNo = 2;
+            Found = Customer.Find(CustomerNo);
+            if (Customer.CustomerName != "test name")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
     }
 }
