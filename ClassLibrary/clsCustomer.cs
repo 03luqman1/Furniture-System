@@ -5,18 +5,43 @@ namespace ClassLibrary
     public class clsCustomer
     {
         private Int32 mCustomerID;
-        private string mCustomerName;
-        public DateTime DateOfBirth { get; set; }
-        public bool Verified { get; set; }
+        private string mName;
+        private DateTime mDateOfBirth;
+        private bool mVerified;
+        private string mEmail;
+        private string mPhoneNumber;
+        public DateTime DateOfBirth 
+        {
+            get
+            {
+                return mDateOfBirth;
+            }
+            set
+            {
+                mDateOfBirth = value;
+            }
+        }
+
+        public bool Verified
+        {
+            get
+            {
+                return mVerified;
+            }
+            set
+            {
+                mVerified = value;
+            }
+        }
         public string Name
         {
             get
             {
-                return mCustomerName;
+                return mName;
             }
             set
             {
-                mCustomerName = value;
+                mName = value;
             }
         }
         public Int32 CustomerID
@@ -31,16 +56,42 @@ namespace ClassLibrary
             }
         }
 
-
-
-
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-
-        public bool Find(int customerNo)
+        public string Email
         {
-            mCustomerID = 2;
+            get
+            {
+                return mEmail;
+            }
+            set
+            {
+                mEmail = value;
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get
+            {
+                return mPhoneNumber;
+            }
+            set
+            {
+                mPhoneNumber = value;
+            }
+        }
+
+        public bool Find(int customerID)
+        {
+            mCustomerID = 21;
+            mName = "test name";
+            mDateOfBirth = Convert.ToDateTime("16/09/2015");
+            mVerified = true;
+            mEmail = "test@email.com";
+            mPhoneNumber = "123456789";
             return true;
         }
+
+        
+
     }
 }
