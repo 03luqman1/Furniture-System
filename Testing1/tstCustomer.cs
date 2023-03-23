@@ -75,7 +75,7 @@ namespace Testing1
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 2;
+            Int32 CustomerID = 21;
 
             Found = Customer.Find(CustomerID);
             Assert.IsTrue(Found);
@@ -88,7 +88,6 @@ namespace Testing1
             Boolean Found = false;
             Boolean OK = true;
             Int32 CustomerID = 21;
-            //string CustomerName = "test name";
             Found = Customer.Find(CustomerID);
             if (Customer.CustomerID != 21)
             {
@@ -106,7 +105,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 CustomerID = 21;
             Found = Customer.Find(CustomerID);
-            if (Customer.Name != "test name")
+            if (Customer.Name != "Test Name")
             {
                 OK = false;
             }
@@ -115,14 +114,14 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void DateOfBirthFound()
+        public void TestDateOfBirthFound()
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
-            Found = Customer.Find(CustomerId);
-            if (Customer.DateOfBirth != Convert.ToDateTime("16/09/2015"))
+            Int32 CustomerID = 21;
+            Found = Customer.Find(CustomerID);
+            if (Customer.DateOfBirth != Convert.ToDateTime("01/01/2000"))
             {
                 OK = false;
             }
@@ -131,13 +130,13 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void VerifiedFound()
+        public void TestVerifiedFound()
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
-            Found = Customer.Find(CustomerId);
+            Int32 CustomerID = 21;
+            Found = Customer.Find(CustomerID);
             if (Customer.Verified != true)
             {
                 OK = false;
@@ -147,14 +146,14 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void EmailFound()
+        public void TestEmailFound()
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
-            Found = Customer.Find(CustomerId);
-            if (Customer.Email != "test@email.com")
+            Int32 CustomerID = 21;
+            Found = Customer.Find(CustomerID);
+            if (Customer.Email != "TestName@TestMail.com")
             {
                 OK = false;
             }
@@ -163,14 +162,14 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void PhoneNumberFound()
+        public void TestPhoneNumberFound()
         {
             clsCustomer Customer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerId = 21;
-            Found = Customer.Find(CustomerId);
-            if (Customer.PhoneNumber != "123456789")
+            Int32 CustomerID = 21;
+            Found = Customer.Find(CustomerID);
+            if (Customer.PhoneNumber != "12345678901")
             {
                 OK = false;
             }
