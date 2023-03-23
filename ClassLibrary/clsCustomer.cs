@@ -80,15 +80,35 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerID)
+        public bool Find(int CustomerID)
         {
-            mCustomerID = 21;
-            mName = "test name";
-            mDateOfBirth = Convert.ToDateTime("16/09/2015");
-            mVerified = true;
-            mEmail = "test@email.com";
-            mPhoneNumber = "123456789";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", CustomerID);
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
+                mVerified = Convert.ToBoolean(DB.DataTable.Rows[0]["Verified"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
+
+            //mCustomerID = 21;
+            //mName = "test name";
+            //mDateOfBirth = Convert.ToDateTime("16/09/2015");
+            //mVerified = true;
+            //mEmail = "test@email.com";
+            //mPhoneNumber = "123456789";
+            //return true;
         }
 
         
