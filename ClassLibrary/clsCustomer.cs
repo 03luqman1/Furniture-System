@@ -100,15 +100,11 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
 
-
-            //mCustomerID = 21;
-            //mName = "test name";
-            //mDateOfBirth = Convert.ToDateTime("16/09/2015");
-            //mVerified = true;
-            //mEmail = "test@email.com";
-            //mPhoneNumber = "123456789";
-            //return true;
+        public string Valid(string Name,string DateOfBirth,string Email,string PhoneNumber,string Verified)
+        {
+            return "";
         }
 
         
