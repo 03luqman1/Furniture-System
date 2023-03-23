@@ -21,9 +21,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("CustomerViewer.aspx");
 
     }
-
+    
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        lblDoesNotExist.Visible = false;
         clsCustomer Customer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
@@ -39,7 +40,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         else
         {
-            txtCustomerID.Text += (" Does Not Exist");
+            lblDoesNotExist.Visible = true;
         }
     }
 }
