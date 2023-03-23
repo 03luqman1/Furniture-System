@@ -7,8 +7,17 @@ using System;
 namespace Testing1
 {
     [TestClass]
+
+    
     public class tstCustomer
     {
+
+        string Name = "Test Name";
+        string DateOfBirth = DateTime.Now.Date.ToString();
+        string Email = "TestEmail@TestMail.com";
+        string PhoneNumber = "09284893523";
+        string Verified = "true";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -175,6 +184,15 @@ namespace Testing1
             }
             Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            Error = Customer.Valid(Name,DateOfBirth,Email,PhoneNumber,Verified);
+            Assert.AreEqual(Error, "");
         }
     }
 }
