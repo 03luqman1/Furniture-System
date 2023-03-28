@@ -13,7 +13,7 @@ namespace Testing1
     {
 
         string Name = "Test Name";
-        string DateOfBirth = DateTime.Now.Date.ToString();
+        string DateOfBirth = "12/03/2000";
         string Email = "TestEmail@TestMail.com";
         string PhoneNumber = "09284893523";
         string Verified = "true";
@@ -194,5 +194,460 @@ namespace Testing1
             Error = Customer.Valid(Name,DateOfBirth,Email,PhoneNumber,Verified);
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void NameMinMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "a";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMinPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "aa";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMaxMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(49, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(50, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMaxPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(51, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(1000, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void NameMid()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(25, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+
+
+
+
+
+
+
+        [TestMethod]
+        public void EmailExtremeMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "a@";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "a@b";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "a@bc";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(49, '@');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(50, '@');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(51, '@');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(1000, '@');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EmailMid()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(25, '@');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailSymbol()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string Email = "";
+            Email = Email.PadRight(25, 'a');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [TestMethod]
+        public void PhoneNumberExtremeMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMinMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "12";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "123";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMinPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "1234";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(14, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(15, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(16, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(100, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMid()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(10, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberIsNumeric()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "1345h678";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        [TestMethod]
+        public void DateOfBirthExtremeMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1000);
+            string DateOfBirth = TestDate.ToString();
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+/*
+        [TestMethod]
+        public void PhoneNumberMinMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "12";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMin()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "123";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMinPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "1234";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxMinusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(14, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(15, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberMaxPlusOne()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(16, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberExtremeMax()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(100, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PhoneNumberMid()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "";
+            PhoneNumber = PhoneNumber.PadRight(10, '1');
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumberIsNumeric()
+        {
+            clsCustomer Customer = new clsCustomer();
+            String Error = "";
+            string PhoneNumber = "1345h678";
+            Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        */
     }
 }
