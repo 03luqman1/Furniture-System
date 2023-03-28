@@ -102,12 +102,73 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string Name,string DateOfBirth,string Email,string PhoneNumber,string Verified)
+        public string Valid(string name,string dateOfBirth,string email,string phoneNumber,string verified)
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            if (name.Length == 0)
+            {
+                Error = Error + "The Name Cannot Be Left Blank : ";
+            }
+            if (name.Length > 50)
+            {
+                Error = Error + "The Name Cannot Be More Than 50 Characters: ";
+            }
+            if ((email.Length < 3) || (email.Contains("@") == false))
+            {
+                Error = Error + "Please Enter A Valid Email Address : ";
+            }
+            if (email.Length > 50)
+            {
+                Error = Error + "The Email Address Cannot Be More Than 50 Characters : ";
+            }
+            if (phoneNumber.Length < 3)
+            {
+                Error = Error + "The Phone Number Cannot Be Less Than 3 Characters : ";
+            }
+            if (phoneNumber.Length > 15)
+            {
+                Error = Error + "The Phone Number Cannot Be More Than 15 Characters : ";
+            }
+            bool Digits = true;
+            foreach (char c in phoneNumber)
+            {
+                if (c < '0' || c > '9')
+                {
+                    Digits = false;
+                }
+            }
+            if (Digits == false)
+            {
+                Error = Error + "The Email Address Must Only Contain Integers : ";
+            }
+            DateTemp = Convert.ToDateTime(dateOfBirth);
+            if (DateTemp < DateTime.Now.Date.AddYears(-150))
+            {
+                Error = Error + "The Date Of Birth Cannot Be More Than 150 Years Ago : ";
+            }
+            return Error;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            return Error;
         }
 
-        
+
 
     }
 }
