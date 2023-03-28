@@ -142,12 +142,23 @@ namespace ClassLibrary
             {
                 Error = Error + "The Email Address Must Only Contain Integers : ";
             }
-            DateTemp = Convert.ToDateTime(dateOfBirth);
-            if (DateTemp < DateTime.Now.Date.AddYears(-150))
+            try
             {
-                Error = Error + "The Date Of Birth Cannot Be More Than 150 Years Ago : ";
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                if (DateTemp < DateTime.Now.Date.AddYears(-150))
+                {
+                    Error = Error + "The Date Of Birth Cannot Be More Than 150 Years Ago : ";
+                }
+                if (DateTemp > DateTime.Now.Date.AddYears(-18))
+                {
+                    Error = Error + "The Date Of Birth must show you are at least 18 Years Old : ";
+                }
             }
-            return Error;
+            catch
+            {
+                Error = Error + "Please Enter the date in the correct format : ";
+            }
+            
 
 
 
