@@ -8,22 +8,25 @@ namespace ClassLibrary
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
         public clsCustomerCollection()
         {
-            clsCustomer TestItem = new clsCustomer();
-            TestItem.CustomerID = 11;
-            TestItem.DateOfBirth = DateTime.Now.AddYears(-19).Date;
-            TestItem.Name = "Testing Name1";
-            TestItem.Email = "testing_name1@test.com";
-            TestItem.PhoneNumber = "098766665521";
-            TestItem.Verified = false;
-            mCustomerList.Add(TestItem);
-            TestItem = new clsCustomer();
-            TestItem.CustomerID = 12;
-            TestItem.DateOfBirth = DateTime.Now.AddYears(-30).Date;
-            TestItem.Name = "Testing Name2";
-            TestItem.Email = "testing_name2@test.com";
-            TestItem.PhoneNumber = "098766665521";
-            TestItem.Verified = true;
-            mCustomerList.Add(TestItem);
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomer_SelectAll");
+            RecordCount = DB.Count;
+            while(Index < RecordCount)
+            {
+                clsCustomer Customer = new clsCustomer();
+                Customer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                Customer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Customer.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Customer.PhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["PhoneNumber"]);
+                Customer.Verified = Convert.ToBoolean(DB.DataTable.Rows[Index]["Verified"]);
+                mCustomerList.Add(Customer);
+                Index++;
+            }
+
+            
         }
         public List<clsCustomer> CustomerList
         {
