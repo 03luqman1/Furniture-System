@@ -5,7 +5,7 @@ namespace ClassLibrary
     public class clsEmployee
     {
         public int EmployeeID { get; set; }
-        public string Name { get; set; }
+        public string EmployeeName { get; set; }
         public string ContentNumber { get; set; }
         public string JobPostion { get; set; }
         public DateTime StartData { get; set; }
