@@ -16,9 +16,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsCustomer Customer = new clsCustomer();
-        Customer.Name = txtName.Text;
-        Session["Customer"] = Customer;
-        Response.Redirect("CustomerViewer.aspx");
+        string Name = txtName.Text;
+        string DateOfBirth = txtDateOfBirth.Text;
+        string Email = txtEmailAddress.Text;
+        string PhoneNumber = txtPhoneNumber.Text;
+        string Verified = chkVerified.Checked.ToString();
+        string Error = "";
+        Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
+        if (Error == "")
+        {
+            Customer.Name = Name;
+            Customer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            Customer.Email = Email;
+            Customer.PhoneNumber = PhoneNumber;
+            Customer.Verified = Convert.ToBoolean(Verified);
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = Customer;
+            CustomerList.Add();
+            Response.Redirect("CustomerList.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
     }
     
