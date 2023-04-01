@@ -11,19 +11,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //clsEmployee AnStaff = new clsEmployee();
-       // AnStaff = (clsEmployee)Session["AnStaff"];
-      //  Response.Write(AnStaff.EmployeeName);
+       clsEmployee Employee = new clsEmployee();
+       Employee = (clsEmployee)Session["Employee"];
+       Response.Write(Employee.EmployeeName);
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        clsEmployee AnStaff = new clsEmployee();
-        AnStaff.EmployeeName = txtEmployeeName.Text;
-        Session["AnStaff"] = AnStaff;
+        clsEmployee Employee = new clsEmployee();
+        Employee.EmployeeName = txtEmployeeName.Text;
+        Session["Employee"] = Employee;
         // navigate to the viewer page
         Response.Redirect("StaffViewer.aspx");
 
 
+    }
+
+    protected void btnOK_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffViewer.aspx");
     }
 }
