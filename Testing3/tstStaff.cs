@@ -66,8 +66,8 @@ namespace Testing3
         {
             clsEmployee Employee = new clsEmployee();
             DateTime TestData = DateTime.Now.Date;
-            Employee.StartData = TestData;
-            Assert.AreEqual(Employee.StartData, TestData);
+            Employee.StartDate = TestData;
+            Assert.AreEqual(Employee.StartDate, TestData);
 
         }
         [TestMethod]
@@ -80,7 +80,124 @@ namespace Testing3
 
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Int32 EmployeeID = 21;
 
+            Found = Employee.Find(EmployeeID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestEmployeeIDFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.EmployeeID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
 
+        }
+        [TestMethod]
+        public void TestNameFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.Name != "Test Name")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestContentNumbeFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.ContentNumber != "12345678901")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestCurrentEmployeeStatusFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.CurrentEmployeeStatus != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestStartDateFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.StartDate != Convert.ToDateTime("01/01/2000"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestJobPostionFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.JobPostion != "Manager")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void EmployeeSalaryFound()
+        {
+            clsEmployee Employee = new clsEmployee();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EmployeeID = 21;
+            Found = Employee.Find(EmployeeID);
+            if (Employee.EmployeeSalary != 2500)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
+   
+    
+
+
+
 }
