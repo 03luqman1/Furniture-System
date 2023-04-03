@@ -30,4 +30,9 @@ public partial class _1_List : System.Web.UI.Page
         Session["CustomerID"] = -1;
         Response.Redirect("CustomerDataEntry.aspx");
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //start from here, edit button click event handler
+    }
 }
