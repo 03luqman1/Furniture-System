@@ -66,6 +66,7 @@ namespace ClassLibrary
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DB.AddParameter("@Name", mThisCustomer.Name);
             DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
             DB.AddParameter("@Email", mThisCustomer.Email);
