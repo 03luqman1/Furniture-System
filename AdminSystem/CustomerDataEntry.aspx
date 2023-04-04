@@ -12,7 +12,7 @@
             <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="126px"></asp:Label>
             <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="height: 29px; width: 48px" Text="Find" />
-            <asp:Label ID="lblDoesNotExist" runat="server" Text="Customer ID Does Not Exist" Visible="False"></asp:Label>
+            <asp:Label ID="lblDoesNotExist" runat="server"></asp:Label>
         </p>
         <asp:Label ID="lblName" runat="server" Text="Full Name " width="126px"></asp:Label>
         <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
