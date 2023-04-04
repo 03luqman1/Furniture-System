@@ -66,7 +66,6 @@ namespace ClassLibrary
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
             DB.AddParameter("@Name", mThisCustomer.Name);
             DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
             DB.AddParameter("@Email", mThisCustomer.Email);
@@ -74,5 +73,18 @@ namespace ClassLibrary
             DB.AddParameter("@Verified", mThisCustomer.Verified);
             return DB.Execute("sproc_tblCustomer_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@Name", mThisCustomer.Name);
+            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@PhoneNumber", mThisCustomer.PhoneNumber);
+            DB.AddParameter("@Verified", mThisCustomer.Verified);
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+
     }
 }
