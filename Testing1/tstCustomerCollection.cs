@@ -109,6 +109,26 @@ namespace Testing1
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.CustomerID = 1;
+            TestItem.Verified = true;
+            TestItem.Name = "Test Name123";
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(18);
+            TestItem.Email = "test@mail.com123";
+            TestItem.PhoneNumber = "12345654345";
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.CustomerID = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            AllCustomers.Delete();
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
 
 
 

@@ -23,13 +23,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     void DisplayCustomer()
     {
-        //need to check
         clsCustomer Customer = new clsCustomer();
-        txtName.Text = Customer.Name;
-        txtEmailAddress.Text = Customer.Email;
-        txtPhoneNumber.Text = Customer.PhoneNumber;
-        txtDateOfBirth.Text = Customer.DateOfBirth.ToString();
-        chkVerified.Checked = Customer.Verified;
+        
+        Boolean Found = false;
+        CustomerID = Convert.ToInt32(CustomerID);
+        Found = Customer.Find(CustomerID);
+        if (Found == true)
+        {
+            txtCustomerID.Text = CustomerID.ToString();
+            txtName.Text = Customer.Name;
+            txtEmailAddress.Text = Customer.Email;
+            txtPhoneNumber.Text = Customer.PhoneNumber;
+            txtDateOfBirth.Text = Customer.DateOfBirth.ToString();
+            chkVerified.Checked = Customer.Verified;
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -75,7 +82,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        lblDoesNotExist.Visible = false;
+        lblDoesNotExist.Text = "";
         clsCustomer Customer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
@@ -91,7 +98,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         else
         {
-            lblDoesNotExist.Visible = true;
+            lblDoesNotExist.Text = "Customer ID Does Not Exist";
         }
     }
+
+
+
 }
