@@ -8,9 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            if (CustomerID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+    }
 
+    void DisplayCustomer()
+    {
+        //need to check
+        clsCustomer Customer = new clsCustomer();
+        txtName.Text = Customer.Name;
+        txtEmailAddress.Text = Customer.Email;
+        txtPhoneNumber.Text = Customer.PhoneNumber;
+        txtDateOfBirth.Text = Customer.DateOfBirth.ToString();
+        chkVerified.Checked = Customer.Verified;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -25,14 +44,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Customer.Valid(Name, DateOfBirth, Email, PhoneNumber, Verified);
         if (Error == "")
         {
+            Customer.CustomerID = CustomerID;
             Customer.Name = Name;
             Customer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
             Customer.Email = Email;
             Customer.PhoneNumber = PhoneNumber;
             Customer.Verified = Convert.ToBoolean(Verified);
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            CustomerList.ThisCustomer = Customer;
-            CustomerList.Add();
+            if (CustomerID == -1)
+            {
+                CustomerList.ThisCustomer = Customer;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(CustomerID);
+                CustomerList.ThisCustomer = Customer;
+                CustomerList.Update();
+            }
+            
             Response.Redirect("CustomerList.aspx");
 
         }

@@ -83,7 +83,7 @@ namespace Testing1
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
-        /*
+
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -97,55 +97,17 @@ namespace Testing1
             TestItem.PhoneNumber = "12345654345";
             AllCustomers.ThisCustomer = TestItem;
             PrimaryKey = AllCustomers.Add();
-            TestItem.AddressNo = PrimaryKey;
+            TestItem.CustomerID = PrimaryKey;
             TestItem.Verified = false;
             TestItem.Name = "Test Name1234567";
             TestItem.DateOfBirth = DateTime.Now.Date.AddYears(20);
             TestItem.Email = "test@mail.com12345678";
             TestItem.PhoneNumber = "1212121212121";
-            AllCustomers.ThisAddress = TestItem;
+            AllCustomers.ThisCustomer = TestItem;
             AllCustomers.Update();
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
-
-        CREATE PROCEDURE sproc_tblCustomer_Update
-            @CustomerID int,
-            @Name varchar(50),
-            @DateOfBirth date,
-            @Email varchar(50),
-            @PhoneNumber varchar(50),
-            @Verified bit
-
-            AS
-            update tblCustomer
-            set Name-@Name,
-                DateOfBirth-@DateOfBirth,
-                Email-@Email,
-                PhoneNumber-@PhoneNumber,
-                Verified-@Verified
-
-            where CustomerID-@CustomerID
-
-
-
-
-        PUT IN CUSTOMER COLLECTION CLASS
-        public void Update()
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
-            DB.AddParameter("@Name", mThisCustomer.Name);
-            DB.AddParameter("@DateOfBirth", mThisCustomer.DateOfBirth);
-            DB.AddParameter("@Email", mThisCustomer.Email);
-            DB.AddParameter("@PhoneNumber", mThisCustomer.PhoneNumber);
-            DB.AddParameter("@Verified", mThisCustomer.Verified);
-            DB.Execute("sproc_tblCustomer_Update");
-        }
-
-        */
-
-
 
 
 

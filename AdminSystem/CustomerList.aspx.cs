@@ -10,9 +10,12 @@ public partial class _1_List : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (IsPostBack == false)
         {
+            
             DisplayCustomers();
+            
         }
     }
 
@@ -33,6 +36,16 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
-        //start from here, edit button click event handler
+        Int32 CustomerID;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["CustomerID"] = CustomerID;
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please Select A Record From The List";
+        }
     }
 }
