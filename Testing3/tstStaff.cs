@@ -45,12 +45,12 @@ namespace Testing3
 
         }
         [TestMethod]
-        public void JobPostionPropertyOK()
+        public void JobPositionPropertyOK()
         {
             clsEmployee Employee = new clsEmployee();
             string TestData = "Manager";
             Employee.JobPostion = TestData;
-            Assert.AreEqual(Employee.JobPostion, TestData);
+            Assert.AreEqual(Employee.JobPosition, TestData);
         }
         [TestMethod]
         public void EmployeeSalaryPropertyOK()
@@ -166,14 +166,14 @@ namespace Testing3
 
         }
         [TestMethod]
-        public void TestJobPostionFound()
+        public void TestJobPositionFound()
         {
             clsEmployee Employee = new clsEmployee();
             Boolean Found = false;
             Boolean OK = true;
             Int32 EmployeeID = 21;
             Found = Employee.Find(EmployeeID);
-            if (Employee.JobPostion != "Manager")
+            if (Employee.JobPosition != "Manager")
             {
                 OK = false;
             }
