@@ -391,26 +391,6 @@ namespace Testing1
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [TestMethod]
         public void PhoneNumberExtremeMin()
         {

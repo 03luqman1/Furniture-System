@@ -112,7 +112,7 @@ namespace ClassLibrary
             }
             if (name.Length > 50)
             {
-                Error = Error + "The Name Cannot Be More Than 50 Characters: ";
+                Error = Error + "The Name Cannot Be More Than 50 Characters : ";
             }
             if ((email.Length < 3) || (email.Contains("@") == false))
             {
@@ -151,12 +151,12 @@ namespace ClassLibrary
                 }
                 if (DateTemp > DateTime.Now.Date.AddYears(-18))
                 {
-                    Error = Error + "The Date Of Birth must show you are at least 18 Years Old : ";
+                    Error = Error + "The Date Of Birth Must Show You Are At Least 18 Years Old : ";
                 }
             }
             catch
             {
-                Error = Error + "Please Enter the date in the correct format : ";
+                Error = Error + "Please Enter The Date In The Correct Format : ";
             }
             
 

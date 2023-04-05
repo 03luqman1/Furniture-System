@@ -17,6 +17,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (CustomerID != -1)
             {
                 DisplayCustomer();
+                txtCustomerID.ReadOnly = true;
+                btnFind.Visible = false;
             }
         }
     }
@@ -86,22 +88,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsCustomer Customer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
-        CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        Found = Customer.Find(CustomerID);
-        if (Found == true)
+        try
         {
+            CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            Found = Customer.Find(CustomerID);
+            if (Found == true)
+            {
             txtName.Text = Customer.Name;
             txtEmailAddress.Text = Customer.Email;
             txtPhoneNumber.Text = Customer.PhoneNumber;
             txtDateOfBirth.Text = Customer.DateOfBirth.ToString();
             chkVerified.Checked = Customer.Verified;
+            }
+            else
+            {
+                lblDoesNotExist.Text = "The Customer ID Entered Does Not Exist";
+            }
         }
-        else
+        catch 
         {
-            lblDoesNotExist.Text = "Customer ID Does Not Exist";
+            lblDoesNotExist.Text = "The Customer ID Must Be An Integer";
         }
+        
+        
     }
 
 
 
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        txtName.Text = "";
+        txtEmailAddress.Text = "";
+        txtPhoneNumber.Text = "";
+        txtDateOfBirth.Text = "";
+        chkVerified.Checked = false;
+    }
 }
