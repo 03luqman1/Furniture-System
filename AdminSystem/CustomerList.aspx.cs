@@ -45,7 +45,7 @@ public partial class _1_List : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = "Please Select A Record From The List";
+            lblError.Text = "Please Select A Record From The List To Edit";
         }
     }
 
@@ -62,5 +62,26 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please Select A Record From The List To Delete";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName(txtFilter.Text);
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "Name";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName("");
+        txtFilter.Text = "";
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "Name";
+        lstCustomerList.DataBind();
     }
 }

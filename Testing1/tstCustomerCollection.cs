@@ -92,7 +92,7 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             TestItem.Verified = true;
             TestItem.Name = "Test Name123";
-            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(18);
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(-18);
             TestItem.Email = "test@mail.com123";
             TestItem.PhoneNumber = "12345654345";
             AllCustomers.ThisCustomer = TestItem;
@@ -100,7 +100,7 @@ namespace Testing1
             TestItem.CustomerID = PrimaryKey;
             TestItem.Verified = false;
             TestItem.Name = "Test Name1234567";
-            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(20);
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(-20);
             TestItem.Email = "test@mail.com12345678";
             TestItem.PhoneNumber = "1212121212121";
             AllCustomers.ThisCustomer = TestItem;
@@ -118,7 +118,7 @@ namespace Testing1
             TestItem.CustomerID = 1;
             TestItem.Verified = true;
             TestItem.Name = "Test Name123";
-            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(18);
+            TestItem.DateOfBirth = DateTime.Now.Date.AddYears(-18);
             TestItem.Email = "test@mail.com123";
             TestItem.PhoneNumber = "12345654345";
             AllCustomers.ThisCustomer = TestItem;
@@ -130,6 +130,46 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("THIS IS NOT A NAME");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByName("Filter");
+            if (FilteredCustomers.Count == 2)
+            {
+                if (FilteredCustomers.CustomerList[0].CustomerID != 25)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[1].CustomerID != 26)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
 
 
