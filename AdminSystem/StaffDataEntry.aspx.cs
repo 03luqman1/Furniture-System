@@ -16,7 +16,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
        //Response.Write(Employee.EmployeeName);
 
-       Response.Write(Employee.Name);
+      // Response.Write(Employee.Name);
 
     }
 
