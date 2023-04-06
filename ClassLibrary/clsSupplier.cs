@@ -4,11 +4,90 @@ namespace ClassLibrary
 {
     public class clsSupplier
     {
-        public int SupplierID { get; set; }
-        public bool SupplierIteamStatus { get; set; }
-        public DateTime EstimateDelivery { get; set; }
-        public string SupplierIteam { get; set; }
-        public decimal SupplierIteamCost { get; set; }
-        public string SupplierName { get; set; }
+        private int mSupplierID;
+        private bool mSupplierIteamStatus;
+        private DateTime mEstimateDelivery;
+        private string mSupplierIteam;
+        private decimal mSupplierIteamCost;
+        private string mSupplierName;
+
+        public bool Find(int supplierID)
+        {
+            mSupplierID = 21;
+            mSupplierIteamStatus = true;
+            mEstimateDelivery = Convert.ToDateTime("01/01/2000");
+            mSupplierIteam = "IPhone 13Pro";
+            mSupplierIteamCost = 1025;
+            mSupplierName = "Test Name";
+            return true;
+        }
+        public int SupplierID
+        {
+            get
+            {
+                return mSupplierID;
+            }
+            set
+            {
+                mSupplierID = value;
+            }
+        }
+        public bool SupplierIteamStatus
+        {
+            get
+            {
+                return mSupplierIteamStatus;
+            }
+            set
+            {
+                mSupplierIteamStatus = value;
+            }
+        }
+        public DateTime EstimateDelivery
+        {
+            get
+            {
+                return mEstimateDelivery;
+            }
+            set
+            {
+                mEstimateDelivery = value;
+            }
+        }
+        public string SupplierIteam
+        {
+            get
+            {
+                return mSupplierIteam;
+            }
+            set
+            {
+                mSupplierIteam = value;
+            }
+        }
+        public decimal SupplierIteamCost
+        {
+            get
+            {
+                return mSupplierIteamCost;
+            }
+            set
+            {
+                mSupplierIteamCost = value;
+            }
+        }
+        public string SupplierName
+        {
+            get
+            {
+                return mSupplierName;
+            }
+            set
+            {
+                mSupplierName = value;
+            }
+        }
+
+
     }
 }

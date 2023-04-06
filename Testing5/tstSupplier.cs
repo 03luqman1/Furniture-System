@@ -72,6 +72,107 @@ namespace Testing5
 
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Int32 SupplierID = 21;
+
+            Found = Supplier.Find(SupplierID);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestSupplierIDFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.SupplierID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestSupplierNameFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.SupplierName != "Test Name")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestSupplierIteamFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.SupplierIteam != "IPhone 13Pro")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestSupplierIteamStatusFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.SupplierIteamStatus != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestEstimateDeliveryFound()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.EstimateDelivery != Convert.ToDateTime("01/01/2000"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+        [TestMethod]
+        public void TestSupplierIteamCostFound()
+
+        {
+            clsSupplier Supplier = new clsSupplier();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 SupplierID = 21;
+            Found = Supplier.Find(SupplierID);
+            if (Supplier.SupplierIteamCost != 1025)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
     }
 }
