@@ -20,5 +20,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["Supplier"] = Supplier;
         Response.Redirect("SupplierViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        lblDoesNotExist.Visible = false;
+        clsSupplier Supplier = new clsSupplier();
+        Int32 SupplierID;
+        Boolean Found = false;
+        SupplierID = Convert.ToInt32(txtSupplierID.Text);
+        Found = Supplier.Find(SupplierID);
+        if (Found == true)
+        {
+            txtSupplierName.Text = Supplier.SupplierName;
+            txtSupplierIteam.Text = Supplier.SupplierIteam;
+            txtEstimateDelivery.Text = Supplier.EstimateDelivery.ToString();
+            txtSupplierIteamCost.Text = Supplier.SupplierIteamCost.ToString();
+            chkSupplierIteamStatus.Checked = Supplier.SupplierIteamStatus;
+
+
+
+        }
+        else
+        {
+            lblDoesNotExist.Visible = true;
+        }
+
+    }
+
 }
+
    

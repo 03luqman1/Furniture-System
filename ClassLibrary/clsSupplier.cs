@@ -12,14 +12,29 @@ namespace ClassLibrary
         private string mSupplierName;
 
         public bool Find(int supplierID)
+
         {
-            mSupplierID = 21;
-            mSupplierIteamStatus = true;
-            mEstimateDelivery = Convert.ToDateTime("01/01/2000");
-            mSupplierIteam = "IPhone 13Pro";
-            mSupplierIteamCost = 1025;
-            mSupplierName = "Test Name";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierID", SupplierID);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierID");
+            if (DB.Count == 1)
+            {
+                mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0][" SupplierID"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0][" SupplierName"]);
+                mEstimateDelivery = Convert.ToDateTime(DB.DataTable.Rows[0][" EstimateDelivery"]);
+
+                mSupplierIteamStatus = Convert.ToBoolean(DB.DataTable.Rows[0][" SupplierIteamStatus"]);
+                mSupplierIteam = Convert.ToString(DB.DataTable.Rows[0][" SupplierIteam"]);
+
+                mSupplierIteamCost = Convert.ToDecimal(DB.DataTable.Rows[0][" SupplierIteamCost"]);
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
         }
         public int SupplierID
         {
