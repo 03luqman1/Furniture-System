@@ -1,4 +1,6 @@
-﻿using ClassLibrary;
+﻿//v00egd00001l.lec-admin.dmu.ac.uk   -- Database directory
+
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -7,6 +9,11 @@ namespace Testing5
     [TestClass]
     public class tstSupplier
     {
+        private string SupplierName;
+        private string SupplierIteam;
+        private string EstimateDelivery;
+        private string SupplierIteamCost;
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -173,6 +180,100 @@ namespace Testing5
             }
             Assert.IsTrue(OK);
         }
+        public void ValidMethodOK()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            Error = Supplier.Valid(SupplierName,SupplierIteam,EstimateDelivery,SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMinMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "a";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "a";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "aa";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(49, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(50, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(51, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(500, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierNameMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierName = "";
+            SupplierName = SupplierName.PadRight(25, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+
 
     }
 }
