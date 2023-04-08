@@ -103,6 +103,21 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string supplierName, string supplierIteam, string estimateDelivery, string supplierIteamCost)
+        {
+            String Error = "";
+         
+            if (supplierName.Length == 0)
+            {
+                Error = Error + "The Name Cannot Be Left Blank : ";
+            }
+            if (supplierName.Length > 50)
+            {
+                Error = Error + "The Name Cannot Be More Than 50 Characters : ";
+            }
+            return "";
+        }
 
+      
     }
 }
