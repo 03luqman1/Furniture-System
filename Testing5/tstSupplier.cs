@@ -273,6 +273,233 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void SupplierIteamMinMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "a";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "aa";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMaxMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            SupplierIteam = SupplierIteam.PadRight(49, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            SupplierIteam = SupplierIteam.PadRight(50, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            SupplierIteam = SupplierIteam.PadRight(51, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            SupplierIteam = SupplierIteam.PadRight(200, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIteamMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string SupplierIteam = "";
+            SupplierIteam = SupplierIteam.PadRight(25, 'a');
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EstimateDeliveryExtremeMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1000);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMinMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-3);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMin()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-150);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMinPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMaxMinusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-3);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-2);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryMaxPlusOne()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryExtremeMax()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1000);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EstimateDeliveryMid()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-16);
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryToday()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string EstimateDelivery = TestDate.ToString();
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EstimateDeliveryInvalidData()
+        {
+            clsSupplier Supplier = new clsSupplier();
+            String Error = "";
+            string EstimateDelivery = "This is not a date!";
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
 
 
     }

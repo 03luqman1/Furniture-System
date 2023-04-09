@@ -106,7 +106,7 @@ namespace ClassLibrary
         public string Valid(string supplierName, string supplierIteam, string estimateDelivery, string supplierIteamCost)
         {
             String Error = "";
-         
+            DateTime DateTemp;
             if (supplierName.Length == 0)
             {
                 Error = Error + "The Name Cannot Be Left Blank : ";
@@ -114,6 +114,30 @@ namespace ClassLibrary
             if (supplierName.Length > 50)
             {
                 Error = Error + "The Name Cannot Be More Than 50 Characters : ";
+            }
+            if (supplierIteam.Length == 0)
+            {
+                Error = Error + "The Iteam Cannot Be Left Blank : ";
+            }
+            if (supplierIteam.Length > 50)
+            {
+                Error = Error + "The Iteam Cannot Be More Than 50 Characters : ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(EstimateDelivery);
+                if (DateTemp < DateTime.Now.Date.AddDays(-30))
+                {
+                    Error = Error + "The Date Of EstimateDelivery Cannot Be More Than 30 Days Ago : ";
+                }
+                if (DateTemp > DateTime.Now.Date.AddDays(-2))
+                {
+                    Error = Error + "The Date Of EstimateDelivery Must Show You Are At Least 2 Days Old : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Please Enter The Date In The Correct Format : ";
             }
             return "";
         }
