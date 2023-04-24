@@ -5,7 +5,7 @@ using System;
 namespace Testing3
 {
     [TestClass]
-    public class tstStaff
+    public class tstEmployee
     {
         [TestMethod]
         public void InstanceOK()
@@ -49,7 +49,7 @@ namespace Testing3
         {
             clsEmployee Employee = new clsEmployee();
             string TestData = "Manager";
-            Employee.JobPostion = TestData;
+            Employee.JobPosition = TestData;
             Assert.AreEqual(Employee.JobPosition, TestData);
         }
         [TestMethod]
@@ -79,7 +79,6 @@ namespace Testing3
             Assert.AreEqual(Employee.CurrentEmployeeStatus, TestData);
 
         }
-
         [TestMethod]
         public void FindMethodOK()
         {
@@ -195,9 +194,6 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
     }
-   
-    
-
-
 
 }
+
