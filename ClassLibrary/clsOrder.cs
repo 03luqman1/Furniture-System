@@ -10,5 +10,6 @@ namespace ClassLibrary
         public int OrderQuantity { get; set; }
         public DateTime OrderDate { get; set; }
         public bool OrderStatus { get; set; }
+        public object OrderNo { get; set; }
     }
 }
