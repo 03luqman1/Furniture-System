@@ -119,6 +119,7 @@ namespace ClassLibrary
         public string Vaild(string name, string employeeSalary, string startDate, string currentEmployeeStatus, string contentNumber, string jobPosition)
         {
             String Error = "";
+            DateTime DateTemp;
             if (name.Length == 0)
             {
                 Error = Error + "The Name Cannot Be Left Blank : ";
@@ -126,6 +127,14 @@ namespace ClassLibrary
             if (name.Length > 50)
             {
                 Error = Error + "The Name Cannot Be More Than 50 Characters : ";
+            }
+            if (JobPosition.Length == 0)
+            {
+                Error = Error + "The JobPosition Cannot Be Left Blank : ";
+            }
+            if (JobPosition.Length > 50)
+            {
+                Error = Error + "The JobPosition Cannot Be More Than 50 Characters : ";
             }
             if (contentNumber.Length < 3)
             {
@@ -135,15 +144,35 @@ namespace ClassLibrary
             {
                 Error = Error + "The Phone Number Cannot Be More Than 15 Characters : ";
             }
-
+            bool Digits = true;
             foreach (char c in contentNumber)
             {
                 if (c < '0' || c > '9')
                 {
+                    Digits = false;
                 }
-
-                return Error;
             }
+            try
+            {
+                DateTemp = Convert.ToDateTime(StartDate);
+                if (DateTemp < DateTime.Now.Date.AddYears(-35))
+                {
+                    Error = Error + "The StartDate Cannot Be More Than 35 Years Ago : ";
+                }
+                if (DateTemp > DateTime.Now.Date.AddDays(-1))
+                {
+                    Error = Error + "The StartDate Must Show You Are At Least 18 Years Old : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Please Enter The Date In The Correct Format : ";
+            }
+
+
+
+            return Error;
+            
         }
     }
 }
