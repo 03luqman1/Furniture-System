@@ -1,12 +1,23 @@
-﻿using ClassLibrary;
+﻿//v00egd00001l.lec-admin.dmu.ac.uk   -- Database directory
+
+using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Testing3
 {
     [TestClass]
+
+
     public class tstEmployee
     {
+            string Name = "Test Name";
+            string ContentNumber = "12345678901";
+            string StartDate = "01/01/2000";
+            string CurrentEmployeeStatus = "true";
+            string EmployeeSalary = "2500";
+            string JobPosition = "Manager";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -193,6 +204,205 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
+        public void ValidMethodOK()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMinMinusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMin()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "a";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMinPlusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "aa";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMaxMinusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(49, 'a');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMax()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(50, 'a');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameMaxPlusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(51, 'a');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NameExtremeMax()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(1000, 'a');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void NameMid()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string Name = "";
+            Name = Name.PadRight(25, 'a');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ContentNumberExtremeMin()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMinMinusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "11";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMin()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "123";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMinPlusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "1234";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMaxMinusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            ContentNumber = ContentNumber.PadRight(13, '1');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMax()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            ContentNumber = ContentNumber.PadRight(14, '1');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberMaxPlusOne()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            ContentNumber = ContentNumber.PadRight(15, '1');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberExtremeMax()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            ContentNumber = ContentNumber.PadRight(100, '1');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void ContentNumberMid()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "";
+            ContentNumber = ContentNumber.PadRight(7, '1');
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ContentNumberIsNumeric()
+        {
+            clsEmployee Employee = new clsEmployee();
+            String Error = "";
+            string ContentNumber = "1345h678";
+            Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 
 }

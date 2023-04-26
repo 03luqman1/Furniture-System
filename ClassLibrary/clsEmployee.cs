@@ -83,7 +83,7 @@ namespace ClassLibrary
             }
         }
         public DateTime StartDate
-        { 
+        {
             get
             {
                 return mStartDate;
@@ -116,6 +116,34 @@ namespace ClassLibrary
             }
         }
 
-    }
+        public string Vaild(string name, string employeeSalary, string startDate, string currentEmployeeStatus, string contentNumber, string jobPosition)
+        {
+            String Error = "";
+            if (name.Length == 0)
+            {
+                Error = Error + "The Name Cannot Be Left Blank : ";
+            }
+            if (name.Length > 50)
+            {
+                Error = Error + "The Name Cannot Be More Than 50 Characters : ";
+            }
+            if (contentNumber.Length < 3)
+            {
+                Error = Error + "The Phone Number Cannot Be Less Than 3 Characters : ";
+            }
+            if (contentNumber.Length > 14)
+            {
+                Error = Error + "The Phone Number Cannot Be More Than 15 Characters : ";
+            }
 
+            foreach (char c in contentNumber)
+            {
+                if (c < '0' || c > '9')
+                {
+                }
+
+                return Error;
+            }
+        }
+    }
 }
