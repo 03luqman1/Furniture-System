@@ -37,7 +37,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click1(object sender, EventArgs e)
     {
-        Response.Redirect("StaffViewer.aspx");
+        clsEmployee Employee = new clsEmployee();
+        string Name = txtEmployeeName.Text;
+        string StartDate = txtEmployeeStartDate.Text.ToString();
+        string EmployeeSalary = txtEmployeeSalary.Text.ToString();
+        string JobPosition = txtEmployeeJobPosition.Text;
+        string ContentNumber = txtEmployeeContentNo.Text;
+        string CurrentEmployeeStatus = chkCurrentEmployeeStatus.Checked.ToString();
+        string Error = "";
+        Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
+        if (Error == "")
+        {
+            // Employee.EmployeeID = EmployeeID;
+            Employee.Name = Name;
+            Employee.StartDate = Convert.ToDateTime(StartDate);
+            Employee.JobPosition = JobPosition;
+            Employee.ContentNumber = ContentNumber;
+            Employee.CurrentEmployeeStatus = Convert.ToBoolean(CurrentEmployeeStatus);
+            Session["Employee"] = Employee;
+            Response.Write("EmployeeViewer.aspx");
+        }
+            //clsEmployeeCollection EmployeeList = new clsEmployeeCollection();
+            //if (EmployeeID == -1)
+          //  {
+           //     EmployeeList.ThisEmployee = Employee;
+            //    EmployeeList.Add();
+          //  }
+          //  else
+          //  {
+            //    EmployeeList.ThisEmployee.Find(EmployeeID);
+            //    EmployeeList.ThisEmployee = Employee;
+            //    EmployeeList.Update();
+         //   }
+
+          //  Response.Redirect("EmployeeList.aspx");
+
+      //  }
+      //  else
+      //  {
+       //     lblError.Text = Error;
+      //  }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -87,13 +127,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblDoesNotExist.Visible = true;
         }
-
-    }
-
-
-
-    protected void TxtEmployeeID_TextChanged(object sender, EventArgs e)
-    {
-
     }
 }
