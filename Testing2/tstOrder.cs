@@ -7,14 +7,19 @@ namespace Testing2
 	[TestClass]
 	public class tstorder
 	{
+
 		string OrderName = "Furniture";
 		string OrderDate = "12/03/2000";
 		string OrderQuantity = "2";
 		string OrderCost = "400";
 		string OrderConfirm = "true";
 
+		public object Order { get; private set; }
+		public object OrderId { get; private set; }
+        public bool Dispatch { get; private set; }
 
-		[TestMethod]
+
+        [TestMethod]
 		public void InstanceOk()
 		{
 			//Create an instance of the class we want to create
@@ -64,6 +69,7 @@ namespace Testing2
 			string TestData = "25";
 			Order.OrderQuantity = TestData;
 			Assert.AreEqual(Order.OrderQuantity, TestData);
+
 		}
 	}
 	public void OrderCostOK()
@@ -73,30 +79,43 @@ namespace Testing2
 		Order.OrderCost = TestData;
 		Assert.AreEqual(Order.OrderCost, TestData);
 	}
+
+
+		}
+		[TestMethod]
+		public void OrderCostOk()
+		{
+			clsOrder Order = new clsOrder();
+			decimal TestData = 350;
+			Order.OrderCost = TestData;
+			Assert.AreEqual(Order.OrderCost, TestData);
+
+		}
+
 		
 		[TestMethod]
 		public void FindMethodOk()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
-			Int32 OrderID = 1;
+			Int32 OrderId = 1;
 
-			Found = Order.Find(OrderID);
+			Found = Order.Find(OrderId);
 			Assert.IsTrue(Found);
 		}
 		[TestMethod]
-		public void TestOrderIDFound()
+		public void TestOrderIdFound()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
-			if (Order.OrderID != 21)
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
+			if (Order.OrderId != 21)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 
@@ -106,13 +125,13 @@ namespace Testing2
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
 			if (Order.OrderName != "Furniture")
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 		}
 
 		[TestMethod]
@@ -121,46 +140,47 @@ namespace Testing2
 			clsOrder AnOrder = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderNo = 21;
-			Found = AnOrder.Find(OrderNo);
-			if (AnOrder.DateAdded != Convert.ToDateTime("24/02/2023"))
+			Int32 OrderId = 21;
+			Found = AnOrder.Find(OrderId);
+			if (AnOrder.OrderDate != Convert.ToDateTime("24/02/2023"))
 			{
 				OK = false;
 			}
 
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 		}
 		[TestMethod]
-		public void TestConfirmFound()
+		public void TestOrderConfirmFound()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 1;
-			Found = Order.Find(OrderID);
-			if (Order.orderConfirm != true)
+			Int32 OrderId = 1;
+			Found = Order.Find(OrderId);
+			if (Order.OrderConfirm != true)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 		[TestMethod]
-		public void TestQuantityFound()
+		public void TestOrderQuantityFound()
 		{
-			clsOrder Order = new clsOrder();
-			Boolean Found = false;
-			Boolean OK = true;
-			Int32 OrderID = 1;
-			Found = Order.Find(OrderID);
-			if (Order.OrderConfirm != "5")
 			{
-				OK = false;
+				clsOrder Order = new clsOrder();
+				Boolean Found = false;
+				Boolean OK = true;
+				Int32 OrderId = 21;
+				Found = Order.Find(OrderId);
+				if (Order.OrderQuantity != 5)
+				{
+					OK = false;
+				}
+				Assert.IsTrue(Found);
+
 			}
-			Assert.IsTrue(OK);
-
 		}
-
 
 		[TestMethod]
 		public void TestOrderCostFound()
@@ -169,12 +189,13 @@ namespace Testing2
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
 			if (Order.OrderCost != 1025)
 			{
 				OK = false;
 			}
+
 			Assert.IsTrue(OK);
 
 		}
@@ -431,6 +452,9 @@ namespace Testing2
 			Assert.AreNotEqual(Error, "");
 		}
 
+			Assert.IsTrue(Found);
+
+
 		[TestMethod]
 		public void OrderQuantityrExtremeMax()
 		{
@@ -451,6 +475,9 @@ namespace Testing2
 			Error = Order.Valid(OrderName, OrderDate, OrderQuantity, OrderCost, OrderConfirm);
 			Assert.AreEqual(Error, "");
 		}
+		
+		
+		
 
 		[TestMethod]
 		public void OrderQuantityIsNumeric()

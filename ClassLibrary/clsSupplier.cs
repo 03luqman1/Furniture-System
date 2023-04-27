@@ -103,7 +103,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string supplierName, string supplierIteam, string estimateDelivery, string supplierIteamCost)
+        public string Valid(string supplierName, string supplierIteam, string estimateDelivery, string supplierIteamCost, string supplierIteamStatus)
         {
             String Error = "";
             DateTime DateTemp;
