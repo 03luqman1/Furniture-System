@@ -5,17 +5,17 @@ namespace ClassLibrary
     public class clsOrder
     {
 
-        private Boolean mActive;
-        public bool Active
+        private Boolean mConfirm;
+        public bool Confirm
         {
             get
             {
-                return mActive;
+                return mConfirm;
 
             }
             set
             {
-                mActive = value;
+                mConfirm = value;
 
             }
         }
@@ -23,10 +23,9 @@ namespace ClassLibrary
         private Int32 mOrderId;
         private string mOrderName;
         private DateTime mOrderDate;
-        private bool mOrderConfirm;
         private Int32 mOrderQuantity;
         private decimal mOrderCost;
-        private bool mOrderStatus;
+        private bool mOrderConfirm;
 
         public Int32 OrderId
         {
@@ -67,18 +66,7 @@ namespace ClassLibrary
                 mOrderDate = value;
             }
         }
-        public bool OrderConfirm
-        {
-            get
-            {
-                return mOrderConfirm;
-            }
-            set
-            {
-                mOrderConfirm = value;
-            }
-        }
-
+        
         public Int32 OrderQuantity
         {
             get
@@ -92,18 +80,7 @@ namespace ClassLibrary
 
             }
         }
-        public bool OrderStatus
-        {
-            get
-            {
-                return mOrderStatus;
-            }
-            set
-            {
-                mOrderStatus = value;
-            }
-        }
-
+       
 
 
         public decimal OrderCost
@@ -117,8 +94,17 @@ namespace ClassLibrary
                 mOrderCost = value;
             }
         }
-
-
+        public bool OrderConfirm
+        {
+            get
+            {
+                return mOrderConfirm;
+            }
+            set
+            {
+                mOrderConfirm = value;
+            }
+        }
 
         public bool Find(int OrderID)
 
@@ -131,14 +117,11 @@ namespace ClassLibrary
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0][" SupplierID"]);
                 mOrderName = Convert.ToString(DB.DataTable.Rows[0][" SupplierName"]);
                 mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0][" OrderDate"]);
-                mOrderConfirm = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderConfirm"]);
                 mOrderQuantity = Convert.ToInt32(DB.DataTable.Rows[0][" OrderQuantity"]);
                 mOrderCost = Convert.ToDecimal(DB.DataTable.Rows[0][" OrderCost"]);
-                mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0][" OrderStatus"]);
-            
-
-               
-                return true;
+                mOrderConfirm = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderConfirm"]);
+                    
+                    return true;
             }
 
             else
