@@ -9,11 +9,11 @@ namespace Testing5
     [TestClass]
     public class tstSupplier
     {
-        private string SupplierName;
-        private string SupplierIteam;
-        private string EstimateDelivery;
-        private string SupplierIteamCost;
-
+         string SupplierName = "Test Name";
+         string SupplierIteam = "Bed";
+         string EstimateDelivery = "01/01/2024";
+         string SupplierIteamCost = "580";
+        string SupplierIteamStatus = "True";
         [TestMethod]
         public void InstanceOK()
         {
@@ -184,7 +184,7 @@ namespace Testing5
         {
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
-            Error = Supplier.Valid(SupplierName,SupplierIteam,EstimateDelivery,SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName ,SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -194,7 +194,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierName = "a";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -204,7 +204,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierName = "a";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -214,7 +214,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierName = "aa";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -225,7 +225,7 @@ namespace Testing5
             String Error = "";
             string SupplierName = "";
             SupplierName = SupplierName.PadRight(49, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -236,7 +236,7 @@ namespace Testing5
             String Error = "";
             string SupplierName = "";
             SupplierName = SupplierName.PadRight(50, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -247,7 +247,7 @@ namespace Testing5
             String Error = "";
             string SupplierName = "";
             SupplierName = SupplierName.PadRight(51, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -258,7 +258,7 @@ namespace Testing5
             String Error = "";
             string SupplierName = "";
             SupplierName = SupplierName.PadRight(500, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -269,7 +269,7 @@ namespace Testing5
             String Error = "";
             string SupplierName = "";
             SupplierName = SupplierName.PadRight(25, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -279,7 +279,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierIteam = "";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -289,7 +289,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierIteam = "a";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -299,7 +299,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string SupplierIteam = "aa";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -310,7 +310,7 @@ namespace Testing5
             String Error = "";
             string SupplierIteam = "";
             SupplierIteam = SupplierIteam.PadRight(49, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -321,7 +321,7 @@ namespace Testing5
             String Error = "";
             string SupplierIteam = "";
             SupplierIteam = SupplierIteam.PadRight(50, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -332,7 +332,7 @@ namespace Testing5
             String Error = "";
             string SupplierIteam = "";
             SupplierIteam = SupplierIteam.PadRight(51, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -343,7 +343,7 @@ namespace Testing5
             String Error = "";
             string SupplierIteam = "";
             SupplierIteam = SupplierIteam.PadRight(200, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -354,7 +354,7 @@ namespace Testing5
             String Error = "";
             string SupplierIteam = "";
             SupplierIteam = SupplierIteam.PadRight(25, 'a');
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -366,7 +366,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1000);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -379,7 +379,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-3);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -392,7 +392,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-150);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -405,7 +405,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -418,7 +418,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-3);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -431,7 +431,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-2);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -444,7 +444,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -457,7 +457,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1000);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -471,7 +471,7 @@ namespace Testing5
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-16);
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreEqual(Error, "");
         }
 
@@ -483,7 +483,7 @@ namespace Testing5
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string EstimateDelivery = TestDate.ToString();
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -493,7 +493,7 @@ namespace Testing5
             clsSupplier Supplier = new clsSupplier();
             String Error = "";
             string EstimateDelivery = "This is not a date!";
-            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost);
+            Error = Supplier.Valid(SupplierName, SupplierIteam, EstimateDelivery, SupplierIteamCost, SupplierIteamStatus);
             Assert.AreNotEqual(Error, "");
         }
 

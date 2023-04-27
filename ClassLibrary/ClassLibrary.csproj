@@ -48,6 +48,7 @@
     <Compile Include="clsEmployeeCollection.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsSupplier.cs" />
+    <Compile Include="clsSupplierCollection.cs" />
     <Compile Include="int32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
