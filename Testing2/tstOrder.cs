@@ -73,15 +73,6 @@ namespace Testing2
 			Assert.AreEqual(Order.OrderCost, TestData);
 
 		}
-		[TestMethod]
-		public void OrderStatusOK()
-		{
-			clsOrder Order = new clsOrder();
-			Boolean TestData = Dispatch;
-			Order.OrderStatus = TestData;
-			Assert.AreEqual(Order.OrderStatus, TestData);
-
-		}
 		
 		[TestMethod]
 		public void FindMethodOk()
@@ -188,21 +179,9 @@ namespace Testing2
 			Assert.IsTrue(Found);
 
 		}
-		[TestMethod]
-		public void TestOrderStatusFound()
-		{
-			clsOrder Order = new clsOrder();
-			Boolean Found = false;
-			Boolean OK = true;
-			Int32 OrderId = 21;
-			Found = Order.Find(OrderId);
-			if (Order.OrderStatus != true)
-			{
-				OK = false;
-			}
-			Assert.IsTrue(Found);
-
-		}
+		
+		
+		
 
 	}
 
