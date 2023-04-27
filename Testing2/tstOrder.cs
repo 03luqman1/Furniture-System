@@ -8,9 +8,10 @@ namespace Testing2
 	public class tstorder
 	{
 		public object Order { get; private set; }
-		public object OrderID { get; private set; }
+		public object OrderId { get; private set; }
+        public bool Dispatch { get; private set; }
 
-		[TestMethod]
+        [TestMethod]
 		public void InstanceOk()
 		{
 			//Create an instance of the class we want to create
@@ -50,8 +51,8 @@ namespace Testing2
 		{
 			clsOrder Order = new clsOrder();
 			Boolean TestData = true;
-			Order.orderConfirm = TestData;
-			Assert.AreEqual(Order.orderConfirm, TestData);
+			Order.OrderConfirm = TestData;
+			Assert.AreEqual(Order.OrderConfirm, TestData);
 		}
 		[TestMethod]
 		public void OrderQuantityOk()
@@ -76,35 +77,35 @@ namespace Testing2
 		public void OrderStatusOK()
 		{
 			clsOrder Order = new clsOrder();
-			Boolean TestData = true;
+			Boolean TestData = Dispatch;
 			Order.OrderStatus = TestData;
 			Assert.AreEqual(Order.OrderStatus, TestData);
 
 		}
 		
 		[TestMethod]
-		public void FinfMethodOk()
+		public void FindMethodOk()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
-			Int32 OrderID = 1;
+			Int32 OrderId = 1;
 
-			Found = Order.Find(OrderID);
+			Found = Order.Find(OrderId);
 			Assert.IsTrue(Found);
 		}
 		[TestMethod]
-		public void TestOrderIDFound()
+		public void TestOrderIdFound()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
-			if (Order.OrderID != 21)
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
+			if (Order.OrderId != 21)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 
@@ -114,13 +115,13 @@ namespace Testing2
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
 			if (Order.OrderName != "Furniture")
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 		}
 
 		[TestMethod]
@@ -129,46 +130,47 @@ namespace Testing2
 			clsOrder AnOrder = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderNo = 21;
-			Found = AnOrder.Find(OrderNo);
-			if (AnOrder.DateAdded != Convert.ToDateTime("24/02/2023"))
+			Int32 OrderId = 21;
+			Found = AnOrder.Find(OrderId);
+			if (AnOrder.OrderDate != Convert.ToDateTime("24/02/2023"))
 			{
 				OK = false;
 			}
 
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 		}
 		[TestMethod]
-		public void TestConfirmFound()
+		public void TestOrderConfirmFound()
 		{
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 1;
-			Found = Order.Find(OrderID);
-			if (Order.orderConfirm != true)
+			Int32 OrderId = 1;
+			Found = Order.Find(OrderId);
+			if (Order.OrderConfirm != true)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 		[TestMethod]
-		public void TestQuantityFound()
+		public void TestOrderQuantityFound()
 		{
-			clsOrder Order = new clsOrder();
-			Boolean Found = false;
-			Boolean OK = true;
-			Int32 OrderID = 1;
-			Found = Order.Find(OrderID);
-			if (Order.OrderConfirm != "5")
 			{
-				OK = false;
+				clsOrder Order = new clsOrder();
+				Boolean Found = false;
+				Boolean OK = true;
+				Int32 OrderId = 21;
+				Found = Order.Find(OrderId);
+				if (Order.OrderQuantity != 5)
+				{
+					OK = false;
+				}
+				Assert.IsTrue(Found);
+
 			}
-			Assert.IsTrue(OK);
-
 		}
-
 
 		[TestMethod]
 		public void TestOrderCostFound()
@@ -177,13 +179,13 @@ namespace Testing2
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
 			if (Order.OrderCost != 1025)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 		[TestMethod]
@@ -192,13 +194,13 @@ namespace Testing2
 			clsOrder Order = new clsOrder();
 			Boolean Found = false;
 			Boolean OK = true;
-			Int32 OrderID = 21;
-			Found = Order.Find(OrderID);
+			Int32 OrderId = 21;
+			Found = Order.Find(OrderId);
 			if (Order.OrderStatus != true)
 			{
 				OK = false;
 			}
-			Assert.IsTrue(OK);
+			Assert.IsTrue(Found);
 
 		}
 
