@@ -4,211 +4,30 @@ namespace ClassLibrary
 {
     public class clsOrder
     {
-
-        private Int32 mOrderId;
-        private string mOrderName;
-        private DateTime mOrderDate;
-        private string mOrderQuantity;
-        private string mOrderCost;
-        private bool mOrderConfirm;
-
-
-
-        private Boolean mConfirm;
-        public bool Confirm
-        {
-            get
-            {
-                return mConfirm;
-
-            }
-            set
-            {
-                mConfirm = value;
-
-            }
-        }
-
-        private Int32 mOrderId;
-        private string mOrderName;
-        private DateTime mOrderDate;
-        private Int32 mOrderQuantity;
-        private decimal mOrderCost;
-        private bool mOrderConfirm;
-
-
-        public Int32 OrderId
-        {
-            get
-            {
-                return mOrderId;
-
-            }
-            set
-            {
-                mOrderId = value;
-
-            }
-        }
-
-
-        public string OrderQuantity
-        {
-            get
-            {
-                return mOrderQuantity;
-            }
-            set
-            {
-                mOrderQuantity = value;
-            }
-        }
-
-
-
-            }
-        }
-
-        public string OrderName
-        {
-            get
-            {
-                return mOrderName;
-            }
-            set
-            {
-                mOrderName = value;
-            }
-        }
-
-
-
-        public DateTime OrderDate
-        {
-            get
-            {
-                return mOrderDate;
-
-            }
-            set
-            {
-                mOrderDate = value;
-            }
-        }
-
-
-
-
-
-
-        public string OrderCost
-
-        
-        public Int32 OrderQuantity
-        {
-            get
-            {
-                return mOrderQuantity;
-
-            }
-            set
-            {
-                mOrderQuantity = value;
-
-            }
-        }
+        private int mOrderId;
+        private bool mConfirm;
+        private DateTime mDateAdded;
+        private int mQuantity;
+        private decimal mCost;
+        private string mName;
        
 
-
-        public decimal OrderCost
-
-        {
-            get
-            {
-                return mOrderCost;
-            }
-            set
-            {
-                mOrderCost = value;
-            }
-
-        }
-        public bool OrderConfirm
-        {
-            get
-            {
-                return mOrderConfirm;
-            }
-            set
-            {
-                mOrderConfirm = value;
-            }
-        }
-
-        public bool Find(int OrderID)
+        public bool Find(int supplierID)
 
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderID", OrderID);
-            DB.Execute("sproc_tblOrder_FilterByOrderID");
-            if (DB.Count == 1)
-            {
-                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0][" SupplierID"]);
-                mOrderName = Convert.ToString(DB.DataTable.Rows[0][" SupplierName"]);
-                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0][" OrderDate"]);
-                mOrderQuantity = Convert.ToInt32(DB.DataTable.Rows[0][" OrderQuantity"]);
-                mOrderCost = Convert.ToDecimal(DB.DataTable.Rows[0][" OrderCost"]);
-                mOrderConfirm = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderConfirm"]);
-                    
-                    return true;
-            }
-
-            else
-            {
-                return false;
-            }
-
-
-        }
-
-
-        public string OrderName
-        {
-            get
-            {
-                return mOrderName;
-            }
-            set
-            {
-                mOrderName = value;
-            }
-        }
-
-        public bool OrderConfirm
-        {
-            get
-            {
-                return mOrderConfirm;
-            }
-            set
-            {
-                mOrderConfirm = value;
-            }
-        }
-
-        public bool Find(int OrderId)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@OrderId", OrderId);
+            DB.AddParameter("@OrderId", mOrderId);
             DB.Execute("sproc_tblOrder_FilterByOrderId");
             if (DB.Count == 1)
             {
-                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                mOrderName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
-                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
-                mOrderConfirm = Convert.ToBoolean(DB.DataTable.Rows[0]["Verified"]);
-                mOrderQuantity = Convert.ToString(DB.DataTable.Rows[0]["OrderQuantity"]);
-                mOrderCost = Convert.ToString(DB.DataTable.Rows[0]["OrderCost"]);
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0][" OrderId"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0][" Name"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0][" DateAdded"]);
+
+                mConfirm= Convert.ToBoolean(DB.DataTable.Rows[0][" Confirm"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0][" Quantity"]);
+
+                mCost = Convert.ToDecimal(DB.DataTable.Rows[0][" Cost"]);
                 return true;
             }
 
@@ -216,74 +35,112 @@ namespace ClassLibrary
             {
                 return false;
             }
+
+        }
+        public int OrderId
+        {
+            get
+            {
+                return OrderId;
+            }
+            set
+            {
+                mOrderId = value;
+            }
+        }
+        public bool Confirm
+        {
+            get
+            {
+                return mConfirm;
+            }
+            set
+            {
+                mConfirm = value;
+            }
+        }
+        public DateTime DateAdded
+        {
+            get
+            {
+                return mDateAdded;
+            }
+            set
+            {
+                mDateAdded = value;
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return mName;
+            }
+            set
+            {
+                mName = value;
+            }
+        }
+        public decimal Cost
+        {
+            get
+            {
+                return mCost;
+            }
+            set
+            {
+                mCost = value;
+            }
+        }
+        public int Quantity
+        {
+            get
+            {
+                return mQuantity;
+            }
+            set
+            {
+                mQuantity = value;
+            }
         }
 
-        public string Valid(string OrderName, string OrderDate, string OrderQuantity, string OrderCost, string OrderConfirm)
+        public string Valid(string Name, string Quantity, string DateAdded, string Cost, string Confirm)
         {
-           
             String Error = "";
-            
             DateTime DateTemp;
-         
-            if (OrderName.Length == 0)
+            if (Name.Length == 0)
             {
-                
-                Error = Error + "The OrderName may not be blank : ";
+                Error = Error + "The Name Cannot Be Left Blank : ";
             }
-           
-            if (OrderName.Length > 15)
+            if (Name.Length > 50)
             {
-                
-                Error = Error + "The OrderName must be less than 15 characters : ";
+                Error = Error + "The Name Cannot Be More Than 50 Characters : ";
+            }
+            if (Quantity.Length == 0)
+            {
+                Error = Error + "The Iteam Cannot Be Left Blank : ";
+            }
+            if (Quantity.Length > 50)
+            {
+                Error = Error + "The Iteam Cannot Be More Than 50 Characters : ";
             }
             try
             {
-                
-                DateTemp = Convert.ToDateTime(OrderDate);
-                if (DateTemp < DateTime.Now.Date)
+                DateTemp = Convert.ToDateTime(DateAdded);
+                if (DateTemp < DateTime.Now.Date.AddDays(-30))
                 {
-                  
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The Date Cannot Be More Than 30 Days Ago : ";
                 }
-               
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Now.Date.AddDays(-2))
                 {
-                  
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The Date Must Show You Are At Least 2 Days Old : ";
                 }
             }
             catch
             {
-                
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "Please Enter The Date In The Correct Format : ";
             }
-            
-            if (OrderCost.Length == 0)
-            {
-               
-                Error = Error + "The OrderCost may not be blank : ";
-            }
-           
-            if (OrderCost.Length < 10)
-            {
-             
-                Error = Error + "The OrderCost must be greater than 9  : ";
-            }
-
-          
-            if (OrderQuantity.Length == 0)
-            {
-               
-                Error = Error + "The OrderQuantity may not be blank : ";
-            }
-            
-            if (OrderQuantity.Length <= 1)
-            {
-                
-                Error = Error + "The OrderQuantity must be greater than or equal to 1 characters : ";
-            }
-            
-            return Error;
+            return "";
         }
 
 
