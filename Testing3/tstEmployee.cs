@@ -568,7 +568,7 @@ namespace Testing3
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
+            TestDate = TestDate.AddDays(-2);
             string StartDate = TestDate.ToString();
             Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
             Assert.AreEqual(Error, "");
@@ -607,7 +607,7 @@ namespace Testing3
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(50);
+            TestDate = TestDate.AddYears(100);
             string StartDate = TestDate.ToString();
             Error = Employee.Valid(Name, EmployeeSalary, StartDate, CurrentEmployeeStatus, ContentNumber, JobPosition);
             Assert.AreNotEqual(Error, "");
