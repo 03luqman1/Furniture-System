@@ -64,14 +64,14 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter
+            //DB.AddParameter;
             DB.Execute("sproc_tblCustomer_Update");
         }
 
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@CustomerID", mThisEmployee.EmployeeID);
             DB.AddParameter("@Name", mThisEmployee.Name);
             DB.AddParameter("@StartDate", mThisEmployee.StartDate);
             DB.AddParameter("@JobPosition", mThisEmployee.JobPosition);
@@ -105,9 +105,11 @@ namespace ClassLibrary
                 Employee.StartDate = Convert.ToDateTime(DB.DataTable.Rows[Index][" StartDate"]);
                 Employee.JobPosition = Convert.ToString(DB.DataTable.Rows[Index][" JobPosition"]);
                 Employee.ContentNumber = Convert.ToString(DB.DataTable.Rows[Index][" ContentNumber"]);
-                using System;
-                using System.Collections.Generic;
-
+                //using System;
+                //using System.Collections.Generic;
+            }
+        }
+    }
 namespace ClassLibrary
     {
         public class clsEmployeeCollection
@@ -171,14 +173,14 @@ namespace ClassLibrary
             public void Update()
             {
                 clsDataConnection DB = new clsDataConnection();
-                DB.AddParameter
-                DB.Execute("sproc_tblCustomer_Update");
+                //DB.AddParameter
+                //DB.Execute("sproc_tblCustomer_Update");
             }
 
             public void Delete()
             {
                 clsDataConnection DB = new clsDataConnection();
-                DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+                DB.AddParameter("@CustomerID", mThisEmployee.EmployeeID);
                 DB.AddParameter("@Name", mThisEmployee.Name);
                 DB.AddParameter("@StartDate", mThisEmployee.StartDate);
                 DB.AddParameter("@JobPosition", mThisEmployee.JobPosition);
@@ -219,10 +221,8 @@ namespace ClassLibrary
             }
         }
     }
-.CurrentEmployeeStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["CurrentEmployeeStatus"]);
-                mEmployeeList.Add(Employee);
-                Index++;
+//.CurrentEmployeeStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["CurrentEmployeeStatus"]);
+               // mEmployeeList.Add(Employee);
+               // Index++;
             }
-        }
-    }
-}
+

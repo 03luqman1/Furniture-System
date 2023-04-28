@@ -40,9 +40,9 @@ namespace Testing3
             TestEmployee.EmployeeID = 10;
             TestEmployee.StartDate = DateTime.Now.AddDays(-1).Date;
             TestEmployee.Name = "Testing Name";
-            TestItem.JobPosition = "Manager";
-            TestItem.ContentNumber = "09876634521";
-            TestItem.CurrentEmployeeStatus = true;
+            //TestItem.JobPosition = "Manager";
+            //TestItem.ContentNumber = "09876634521";
+            //TestItem.CurrentEmployeeStatus = true;
             AllEmployees.ThisEmployee = TestEmployee;
             Assert.AreEqual(AllEmployees.ThisEmployee, TestEmployee);
         }
@@ -173,3 +173,4 @@ namespace Testing3
 
         }
     }
+}
