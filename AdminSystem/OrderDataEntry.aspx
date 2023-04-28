@@ -35,7 +35,7 @@
     <p>
         <asp:CheckBox ID="chkOrderConfirm" runat="server" style="z-index: 1; left: 14px; top: 233px; position: absolute; right: 383px" Text="Confirm" />
     </p>
-    <p id="Error">
+    <p id="lblError">
         [lblError]</p>
     <p>
         <asp:Button ID="btnClear" runat="server" style="z-index: 1; left: 137px; top: 340px; position: absolute" Text="Clear" />

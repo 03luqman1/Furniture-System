@@ -8,126 +8,79 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    Int32 OrderId;
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        OrderId = Convert.ToInt32(Session["OrderId"]);
+        // OrderId = Convert.ToInt32(Session["OrderId"]);
         if (IsPostBack == false)
         {
-            if (OrderId != -1)
+            //  if (OrderId != -1)
             {
-                DisplayOrder();
+                //     DisplaySupplier();
                 txtOrderId.ReadOnly = true;
                 btnFind.Visible = false;
             }
         }
+
     }
 
-    void DisplayOrder()
+    protected void btnOk_Click(object sender, EventArgs e)
     {
         clsOrder Order = new clsOrder();
-
-        Boolean Found = false;
-        OrderId = Convert.ToInt32(OrderId);
-        Found = Order.Find(OrderId);
-        if (Found == true)
-        {
-            txtOrderId.Text = OrderId.ToString();
-            txtOrderName.Text = Order.OrderName;
-            txtOrderDate.Text = Order.OrderDate.ToString(); 
-            txtOrderQuantity.Text = Order.OrderQuantity;
-            txtOrderCost.Text = Order.OrderCost;
-            chkOrderConfirm.Checked = Order.OrderConfirm;
-        }
-    }
-
-    protected void btnOK_Click(object sender, EventArgs e)
-    {
-        clsOrder Order = new clsOrder();
-        string OrderName = txtOrderName.Text;
-        string OrderDate = txtOrderDate.Text;
-        string OrderQuantity = txtOrderQuantity.Text;
-        string OrderCost = txtOrderCost.Text;
-        string OrderConfirm = chkOrderConfirm.Checked.ToString();
+        string Name = txtName.Text;
+        string Quantity = txtQuantity.Text;
+        string DateAdded = txtDateAdded.Text.ToString();
+        string Cost = txtCost.ToString();
+        string Confirm = chkConfirm.Checked.ToString();
         string Error = "";
-        Error = Order.Valid(OrderName, OrderDate, OrderQuantity, OrderCost, OrderConfirm);
+        Error = Order.Valid(Name, Quantity, DateAdded, Cost, Confirm);
         if (Error == "")
         {
-            Order.OrderId = OrderId;
-            Order.OrderName = OrderName;
-            Order.OrderDate = Convert.ToDateTime(OrderDate);
-            Order.OrderQuantity = OrderQuantity;
-            Order.OrderCost = OrderCost;
-            Order.OrderConfirm = Convert.ToBoolean(OrderConfirm);
-            clsOrderCollection OrderList = new clsOrderCollection();
-            if (OrderId == -1)
-            {
-                OrderList.ThisOrder = Order;
-                OrderList.Add();
-            }
-            else
-            {
-                OrderList.ThisOrder.Find(OrderId);
-                OrderList.ThisOrder = Order;
-                OrderList.Update();
-            }
-
-            Response.Redirect("OrderList.aspx");
+            Order.Name = Name;
+            Order.Quantity= Quantity;
+            Order.DateAdded = Convert.ToDateTime(DateAdded);
+            Order.Cost = Convert.ToDecimal(Cost);
+            Order.Confirm = Convert.ToBoolean(Confirm);
+            Session["Order"] = Order;
+            Response.Redirect("OrderViewer.aspx");
 
         }
-        else
-        {
-            lblError.Text = Error;
-        }
 
+        Session["Order"] = Order;
+        Response.Redirect("OrderViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        lblDoesNotExist.Text = "";
+        lblDoesNotExist.Visible = false;
         clsOrder Order = new clsOrder();
         Int32 OrderId;
         Boolean Found = false;
-        try
+        OrderId = Convert.ToInt32(txtOrderId.Text);
+        Found = Order.Find(OrderId);
+        if (Found == true)
         {
-            OrderId = Convert.ToInt32(txtOrderId.Text);
-            Found = Order.Find(OrderId);
-            if (Found == true)
-            {
-                txtOrderName.Text = Order.OrderName;
-                txtOrderDate.Text = Order.OrderDate.ToString();
-                txtOrderQuantity.Text = Order.OrderQuantity;
-                txtOrderCost.Text = Order.OrderCost;
-                chkOrderConfirm.Checked = Order.OrderConfirm;
+            txtName.Text = Order.Name;
+            txtQuantity.Text = Order.Quantity;
+            txtDateAdded.Text = Order.DateAdded.ToString();
+            txtCost.Text = Order.Cost.ToString();
+            chkConfirm.Checked = Order.Confirm;
 
-            }
-            else
-            {
-                lblDoesNotExist.Text = "The Order Id Entered Does Not Exist";
-            }
+
+
         }
-        catch
+        else
         {
-            lblDoesNotExist.Text = "The Order Id Must Be An Integer";
+            lblDoesNotExist.Visible = true;
         }
-
 
     }
-
-
 
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("OrderList.aspx");
     }
-
-    protected void btnClear_Click(object sender, EventArgs e)
-    {
-        txtOrderName.Text = "";
-        txtOrderDate.Text = "";
-        txtOrderQuantity.Text = "";
-        txtOrderCost.Text = "";
-        chkOrderConfirm.Checked = false;
-    }
 }
+
