@@ -144,12 +144,12 @@ namespace ClassLibrary
             {
                 Error = Error + "The Phone Number Cannot Be More Than 15 Characters : ";
             }
-            bool Digits = true;
+
             foreach (char c in contentNumber)
             {
                 if (c < '0' || c > '9')
                 {
-                    Digits = false;
+                    bool Digits = false;
                 }
             }
             try
@@ -161,7 +161,7 @@ namespace ClassLibrary
                 }
                 if (DateTemp > DateTime.Now.Date.AddDays(-1))
                 {
-                    Error = Error + "The StartDate Must Show You Are At Least 18 Years Old : ";
+                    Error = Error + "The StartDate Must Show You Are At Least 1 Day Old : ";
                 }
             }
             catch
