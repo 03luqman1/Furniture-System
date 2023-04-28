@@ -9,30 +9,19 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 EmployeeID;
     protected void Page_Load(object sender, EventArgs e)
     {
-       clsEmployee Employee = new clsEmployee();
-       Employee = (clsEmployee)Session["Employee"];
-
-       //Response.Write(Employee.EmployeeName);
-
-      // Response.Write(Employee.Name);
-
-    }
-
-    protected void btnOK_Click(object sender, EventArgs e)
-    {
-        clsEmployee Employee = new clsEmployee();
-
-        //Employee.EmployeeName = txtEmployeeName.Text;
-
-        Employee.Name = txtEmployeeName.Text;
-
-        Session["Employee"] = Employee;
-        // navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
-
-
+        EmployeeID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            if (EmployeeID != -1)
+            {
+                DisplayEmployee();
+                txtEmployeeID.ReadOnly = true;
+                btnFind.Visible = false;
+            }
+        }
     }
 
     protected void btnOK_Click1(object sender, EventArgs e)
@@ -54,29 +43,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Employee.JobPosition = JobPosition;
             Employee.ContentNumber = ContentNumber;
             Employee.CurrentEmployeeStatus = Convert.ToBoolean(CurrentEmployeeStatus);
-            Session["Employee"] = Employee;
-            Response.Write("EmployeeViewer.aspx");
+           // Session["Employee"] = Employee;
+           // Response.Write("EmployeeViewer.aspx");
+            clsEmployeeCollection EmployeeList = new clsEmployeeCollection();
+           if (EmployeeID == -1)
+          {
+           EmployeeList.ThisEmployee = Employee;
+           EmployeeList.Add();
+           }
+           else
+           {
+              EmployeeList.ThisEmployee.Find(EmployeeID);
+              EmployeeList.ThisEmployee = Employee;
+               EmployeeList.Update();
+           }
+
+          Response.Redirect("EmployeeList.aspx");
+
         }
-            //clsEmployeeCollection EmployeeList = new clsEmployeeCollection();
-            //if (EmployeeID == -1)
-          //  {
-           //     EmployeeList.ThisEmployee = Employee;
-            //    EmployeeList.Add();
-          //  }
-          //  else
-          //  {
-            //    EmployeeList.ThisEmployee.Find(EmployeeID);
-            //    EmployeeList.ThisEmployee = Employee;
-            //    EmployeeList.Update();
-         //   }
-
-          //  Response.Redirect("EmployeeList.aspx");
-
-      //  }
-      //  else
-      //  {
-       //     lblError.Text = Error;
-      //  }
+       else
+       { 
+          lblError.Text = Error;
+       }
 
     }
 
@@ -128,9 +116,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblDoesNotExist.Visible = true;
         }
     }
-
-    protected void btnClear_Click(object sender, EventArgs e)
+    void DisplayEmployee()
     {
+        clsEmployee Employee = new clsEmployee();
 
+        Boolean Found = false;
+        EmployeeID = Convert.ToInt32(EmployeeID);
+        Found = Employee.Find(EmployeeID);
+        if (Found == true)
+        {
+            txtEmployeeID.Text = EmployeeID.ToString();
+            txtEmployeeName.Text = Employee.Name;
+            txtEmployeeContentNo.Text = Employee.ContentNumber;
+            txtEmployeeJobPosition.Text = Employee.JobPosition;
+            txtEmployeeStartDate.Text = Employee.StartDate.ToString();
+            txtEmployeeSalary.Text = Employee.EmployeeSalary.ToString();
+            chkCurrentEmployeeStatus.Checked = Employee.CurrentEmployeeStatus;
+        }
+    }
+
+    protected void btnClear_Click1(object sender, EventArgs e)
+    {
+        txtEmployeeName.Text = "";
+        txtEmployeeContentNo.Text = "";
+        txtEmployeeJobPosition.Text = "";
+        txtEmployeeStartDate.Text = "";
+        txtEmployeeSalary.Text = "";
+        chkCurrentEmployeeStatus.Checked = false;
+    }
+
+    protected void btnCancel0_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EmployeeList.aspx");
     }
 }
