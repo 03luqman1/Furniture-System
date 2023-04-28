@@ -33,6 +33,7 @@
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 115px; top: 427px; position: absolute; width: 81px; height: 35px" Text="Cancel" />
         <asp:Label ID="lblEmployeeContentNo" runat="server" style="z-index: 1; left: 29px; top: 116px; position: absolute" Text="Employee Content Number"></asp:Label>
         <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 529px; top: 25px; position: absolute; height: 41px; width: 76px" Text="Find" />
+        <asp:Button ID="btnCancel0" runat="server" style="z-index: 1; left: 115px; top: 427px; position: absolute; width: 81px; height: 35px" Text="Cancel" />
     </form>
 </body>
 </html>
